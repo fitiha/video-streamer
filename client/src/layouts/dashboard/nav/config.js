@@ -13,17 +13,17 @@ const icon = (name) => (
 const navConfig = [
   {
     title: 'dashboard',
-    path: '/dashboard/app',
+    path: '/dashboard',
     icon: icon('ic_analytics'),
   },
   {
     title: 'user',
-    path: '/dashboard/user',
+    path: '/user',
     icon: icon('ic_user'),
   },
   {
     title: 'product',
-    path: '/dashboard/products',
+    path: '/products',
     icon: icon('ic_cart'),
   },
   {
@@ -33,7 +33,7 @@ const navConfig = [
   },
   {
     title: 'blog',
-    path: '/dashboard/blog',
+    path: '/blog',
     icon: icon('ic_blog'),
   },
   {
@@ -46,21 +46,21 @@ const navConfig = [
     path: '/video-list',
     icon: icon('ic_videos'),
   },
-  {
-    title: 'Video player',
-    path: '/video-player',
-    icon: icon('ic_blog'),
-  },
+  // {
+  //   title: 'Video player',
+  //   path: '/video-player',
+  //   icon: icon('ic_blog'),
+  // },
   {
     title: 'login',
     path: '/login',
     icon: icon('ic_lock'),
   },
-  {
-    title: 'Not found',
-    path: '/404',
-    icon: icon('ic_disabled'),
-  },
+  // {
+  //   title: 'Not found',
+  //   path: '/404',
+  //   icon: icon('ic_disabled'),
+  // },
 ];
 
 export default navConfig;
