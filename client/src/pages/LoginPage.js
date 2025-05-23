@@ -9,6 +9,7 @@ import Logo from '../components/logo';
 import Iconify from '../components/iconify';
 // sections
 import { LoginForm } from '../sections/auth/login';
+import { useTranslation } from 'react-i18next';
 
 // ----------------------------------------------------------------------
 
@@ -41,12 +42,13 @@ const StyledContent = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function LoginPage() {
+  const { t } = useTranslation();
   const mdUp = useResponsive('up', 'md');
 
   return (
     <>
       <Helmet>
-        <title> Login | Minimal UI </title>
+        <title> {t('Login | Minimal UI')} </title>
       </Helmet>
 
       <StyledRoot>
@@ -61,7 +63,7 @@ export default function LoginPage() {
         {mdUp && (
           <StyledSection>
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-              Hi, Welcome Back
+              {t("welcomeBack")}
             </Typography>
             <img src="/assets/illustrations/illustration_login.png" alt="login" />
           </StyledSection>
@@ -70,12 +72,12 @@ export default function LoginPage() {
         <Container maxWidth="sm">
           <StyledContent>
             <Typography variant="h4" gutterBottom>
-              Sign in to Minimal
+              {t("sign_in")}
             </Typography>
 
             <Typography variant="body2" sx={{ mb: 5 }}>
-              Don’t have an account? {''}
-              <Link variant="subtitle2">Get started</Link>
+              {t("no_account")} {''}
+              <Link variant="subtitle2">{t('getStarted')}</Link>
             </Typography>
 
             <Stack direction="row" spacing={2}>

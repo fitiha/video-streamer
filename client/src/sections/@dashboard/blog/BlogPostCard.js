@@ -8,6 +8,7 @@ import { fShortenNumber } from '../../../utils/formatNumber';
 //
 import SvgColor from '../../../components/svg-color';
 import Iconify from '../../../components/iconify';
+import { useTranslation } from 'react-i18next';
 
 // ----------------------------------------------------------------------
 
@@ -57,6 +58,7 @@ BlogPostCard.propTypes = {
 };
 
 export default function BlogPostCard({ post, index }) {
+  const {t}= useTranslation();
   const { cover, title, view, comment, share, author, createdAt } = post;
   const latestPostLarge = index === 0;
   const latestPost = index === 1 || index === 2;
@@ -118,7 +120,7 @@ export default function BlogPostCard({ post, index }) {
             }}
           />
 
-          <StyledCover alt={title} src={cover} />
+          <StyledCover alt={t(title)} src={cover} />
         </StyledCardMedia>
 
         <CardContent
@@ -146,7 +148,7 @@ export default function BlogPostCard({ post, index }) {
               }),
             }}
           >
-            {title}
+            {t(title)}
           </StyledTitle>
 
           <StyledInfo>

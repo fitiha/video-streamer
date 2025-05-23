@@ -6,6 +6,7 @@ import Iconify from '../components/iconify';
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../sections/@dashboard/blog';
 // mock
 import POSTS from '../_mock/blog';
+import { useTranslation } from 'react-i18next';
 
 // ----------------------------------------------------------------------
 
@@ -18,6 +19,7 @@ const SORT_OPTIONS = [
 // ----------------------------------------------------------------------
 
 export default function BlogPage() {
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
@@ -27,10 +29,10 @@ export default function BlogPage() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Blog
+            {t('Blog')} 
           </Typography>
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
-            New Post
+            {t("new_post")}
           </Button>
         </Stack>
 

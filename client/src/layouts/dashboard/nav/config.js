@@ -37,12 +37,12 @@ const navConfig = [
     icon: icon('ic_blog'),
   },
   {
-    title: 'Video upload',
+    title: 'videoUpload',
     path: '/video-upload',
     icon: icon('ic_blog'),
   },
   {
-    title: 'video list',
+    title: 'videoList',
     path: '/video-list',
     icon: icon('ic_videos'),
   },

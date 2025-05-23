@@ -1,32 +1,38 @@
 import { useState } from 'react';
-// @mui
+import { useTranslation } from 'react-i18next';
 import { alpha } from '@mui/material/styles';
 import { Box, MenuItem, Stack, IconButton, Popover } from '@mui/material';
 
-// ----------------------------------------------------------------------
 
+// Language options
 const LANGS = [
   {
     value: 'en',
-    label: 'English',
+    label: 'english',
     icon: '/assets/icons/ic_flag_en.svg',
   },
+  // {
+  //   value: 'de',
+  //   label: 'German',
+  //   icon: '/assets/icons/ic_flag_de.svg',
+  // },
+  // {
+  //   value: 'fr',
+  //   label: 'French',
+  //   icon: '/assets/icons/ic_flag_fr.svg',
+  // },
   {
-    value: 'de',
-    label: 'German',
-    icon: '/assets/icons/ic_flag_de.svg',
-  },
-  {
-    value: 'fr',
-    label: 'French',
-    icon: '/assets/icons/ic_flag_fr.svg',
+    value: 'am',
+    label: 'amharic',
+    icon: '/assets/icons/ethiopia-flag-icon(2).svg', // <- Add Amharic flag icon (Ethiopia)
   },
 ];
 
-// ----------------------------------------------------------------------
-
 export default function LanguagePopover() {
+  const { i18n } = useTranslation();
   const [open, setOpen] = useState(null);
+  const currentLang = LANGS.find((lang) => lang.value === i18n.language) || LANGS[0];
+  const {t} = useTranslation();
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
@@ -36,20 +42,26 @@ export default function LanguagePopover() {
     setOpen(null);
   };
 
+  const handleChangeLanguage = (lang) => {
+    console.log('Language changed to:', lang);
+    i18n.changeLanguage(lang);
+    handleClose();
+  };
+
   return (
     <>
       <IconButton
         onClick={handleOpen}
         sx={{
           padding: 0,
-          width: 44,
-          height: 44,
+          width: 30,
+          height: 30,
           ...(open && {
             bgcolor: (theme) => alpha(theme.palette.primary.main, theme.palette.action.focusOpacity),
           }),
         }}
       >
-        <img src={LANGS[0].icon} alt={LANGS[0].label} />
+        <img src={currentLang.icon} alt={currentLang.label} />
       </IconButton>
 
       <Popover
@@ -74,10 +86,13 @@ export default function LanguagePopover() {
       >
         <Stack spacing={0.75}>
           {LANGS.map((option) => (
-            <MenuItem key={option.value} selected={option.value === LANGS[0].value} onClick={() => handleClose()}>
+            <MenuItem
+              key={option.value}
+              selected={option.value === currentLang.value}
+              onClick={() => handleChangeLanguage(option.value)}
+            >
               <Box component="img" alt={option.label} src={option.icon} sx={{ width: 28, mr: 2 }} />
-
-              {option.label}
+              {t(option.label)}
             </MenuItem>
           ))}
         </Stack>

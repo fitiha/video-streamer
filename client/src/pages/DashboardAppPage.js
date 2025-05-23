@@ -17,11 +17,13 @@ import {
   AppCurrentSubject,
   AppConversionRates,
 } from '../sections/@dashboard/app';
+import { useTranslation } from 'react-i18next';
 
 // ----------------------------------------------------------------------
 
 export default function DashboardAppPage() {
   const theme = useTheme();
+  const {t} = useTranslation();
 
   return (
     <>
@@ -31,7 +33,7 @@ export default function DashboardAppPage() {
 
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back
+          {t("welcomeBack")}
         </Typography>
 
         <Grid container spacing={3}>
@@ -53,7 +55,7 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={8}>
             <AppWebsiteVisits
-              title="Website Visits"
+              title={t("website_visits")}
               subheader="(+43%) than last year"
               chartLabels={[
                 '01/01/2003',
@@ -93,7 +95,7 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={4}>
             <AppCurrentVisits
-              title="Current Visits"
+              title={t("current_visits")}
               chartData={[
                 { label: 'America', value: 4344 },
                 { label: 'Asia', value: 5435 },
@@ -111,7 +113,7 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={8}>
             <AppConversionRates
-              title="Conversion Rates"
+              title={t("conversion_rates")}
               subheader="(+43%) than last year"
               chartData={[
                 { label: 'Italy', value: 400 },
@@ -130,7 +132,7 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={4}>
             <AppCurrentSubject
-              title="Current Subject"
+              title={t("current_subject")}
               chartLabels={['English', 'History', 'Physics', 'Geography', 'Chinese', 'Math']}
               chartData={[
                 { name: 'Series 1', data: [80, 50, 30, 40, 100, 20] },
@@ -143,7 +145,7 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={8}>
             <AppNewsUpdate
-              title="News Update"
+              title={t("news_update")}
               list={[...Array(5)].map((_, index) => ({
                 id: faker.datatype.uuid(),
                 title: faker.name.jobTitle(),
@@ -156,7 +158,7 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={4}>
             <AppOrderTimeline
-              title="Order Timeline"
+              title={t("order_timeline")}
               list={[...Array(5)].map((_, index) => ({
                 id: faker.datatype.uuid(),
                 title: [
@@ -174,7 +176,7 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={4}>
             <AppTrafficBySite
-              title="Traffic by Site"
+              title={t("traffic_by_site")}
               list={[
                 {
                   name: 'FaceBook',
@@ -202,7 +204,7 @@ export default function DashboardAppPage() {
 
           <Grid item xs={12} md={6} lg={8}>
             <AppTasks
-              title="Tasks"
+              title={t("tasks")}
               list={[
                 { id: '1', label: 'Create FireStone Logo' },
                 { id: '2', label: 'Add SCSS and JS files if required' },

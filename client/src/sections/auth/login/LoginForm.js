@@ -5,11 +5,14 @@ import { Link, Stack, IconButton, InputAdornment, TextField, Checkbox } from '@m
 import { LoadingButton } from '@mui/lab';
 // components
 import Iconify from '../../../components/iconify';
+import { useTranslation } from 'react-i18next';
+
 
 // ----------------------------------------------------------------------
 
 export default function LoginForm() {
   const navigate = useNavigate();
+  const {t}= useTranslation();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -20,11 +23,11 @@ export default function LoginForm() {
   return (
     <>
       <Stack spacing={3}>
-        <TextField name="email" label="Email address" />
+        <TextField name="email" label={t("email_address")} />
 
         <TextField
           name="password"
-          label="Password"
+          label={t("password")}
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
@@ -41,12 +44,12 @@ export default function LoginForm() {
       <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
         <Checkbox name="remember" label="Remember me" />
         <Link variant="subtitle2" underline="hover">
-          Forgot password?
+          {t("forgot_password")}
         </Link>
       </Stack>
 
       <LoadingButton fullWidth size="large" type="submit" variant="contained" onClick={handleClick}>
-        Login
+        {t("login")}
       </LoadingButton>
     </>
   );
